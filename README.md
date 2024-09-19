@@ -1,4 +1,4 @@
-# Scripts-Python-P-blicos
+# Scripts-Python-Publicos
 
 La intención de estos script es que sean públicos, realmente hacen funciones sencillas pero pueden resultar útiles cuando no te quieren soltar presupuesto para una herramienta completa
 Al script de ping-scan-tool le faltan modificaciones ya que se hizo de manera muy apresurada para una solución específica pero la lógica ya está hecha simplemente para ser más permisivo con el hostname y para escanear todos los octetos no solo los primeros dos
