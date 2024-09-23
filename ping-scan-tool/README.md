@@ -28,6 +28,8 @@ Esta herramienta se hizo con el fin de escanear un rango de direcciones IP a tra
 > [!NOTE]
 > El escaneo hace uso del "ping" haciendo dos intentos por cada dirección IP encontrada en el rango con un tiempo de 3 segundos para cada respuesta, por lo que cada ip demorará 6~7 segundos en revisarse aproximadamente, considera los tiempos y la cantidad de Direcciones IP en el rango introducido para asegurar que el equipo que ejecutará el script se mantenga encendido y con conexión a intenet todo el tiempo 
 
+5. Una vez terminado el escaneo generará un archivo excel en la misma carpeta donde se ejecutó el script con el nombre "Escaneo <ip_inicio>_<ip_fin>_<fecha>.xlsx" así como un archivo log con el nombre "LogEscaneo <ip_inicio>_<ip_fin>_<fecha>.log" y abrirá el explorador de windows en la carpeta en la que se guardó el archivo
+
 ## LIMITANTES
 + Actualmente esta librería no funciona para Sistemas operativos distitos a Windows, solo ha sido testeado en Windows 10 y Windows 11
 + No existe un botón de Pausa, para ese caso se genera el archivo ".log" el cual almacena la ultima dirección IP que se escaneó en caso de un error inesperado
