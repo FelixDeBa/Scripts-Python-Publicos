@@ -1,5 +1,5 @@
 # Herramienta para escaneo de Direcciones IP
-Esta herramienta se hizo con el fin de escanear un rango de direcciones IP a través de un subproceso de windows y vaciar el resultante a un archivo excel que se generará en la misma carpeta donde sejecutó el script
+Esta herramienta se hizo con el fin de escanear un rango de direcciones IP a través de un subproceso de windows y vaciar el resultante de las direcciones IP que respondieron y las que tenían un DNS asignado pero no respondieron a un archivo excel que se generará en la misma carpeta donde sejecutó el script.
 
 ## REQUIERIMIENTOS
 - Sistema Operativo Windows
