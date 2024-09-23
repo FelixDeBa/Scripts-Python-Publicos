@@ -16,6 +16,10 @@ Esta herramienta se hizo con el fin de escanear un rango de direcciones IP a tra
 ```
   pip install openpyxl
 ```
+o
+```
+  python -m pip install openpyxl
+```
 
 3. Una vez cumplidos estos requerimientos puedes ejecutar el script desde una terminal como normalmente se hace, o bien, puedes dar doble clic al archivo y este se ejecutará en una nuva ventana de cmd o powershell.
 ```
