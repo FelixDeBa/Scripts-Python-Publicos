@@ -3,6 +3,7 @@ from datetime import date
 from openpyxl.styles import PatternFill
 import os
 from time import sleep
+os.system("")
 
 class bcolors:
     HEADER = '\033[95m'
@@ -29,7 +30,7 @@ hoja['c1'].value ='Nombre dominio'
 hoja['d1'].value ='Información Adicional'
 
 
-regexUsr = r'(?:Haciendo ping a |Pinging )(?P<dns>(?:\w+\.)+\w+)?(?: \[)?(?P<ip>\d{1,3}(?:\.\d{1,3}){3})(?:\])?'
+regexUsr = r'(?:Haciendo ping a |Pinging )(?P<dns>(?:.+)(?!\d{1,3}(?:\.\d{1,3}){3}))?(?: \[)?(?P<ip>\d{1,3}(?:\.\d{1,3}){3})(?:\])?'
 regexIP = r'^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
 regexTimeout=r'(?:tiempo de espera agotado|request timed out)'
 
@@ -67,12 +68,17 @@ for oct1 in range(octetos_inicio[0], octetos_fin[0]+1):
                     for linea in texto:
                         if re.match(regexUsr, linea):
                             matches = re.search(regexUsr, linea)
-                            hostname = matches.group('dns') if 'dns' in matches.groupdict() else 'No encontrado'
+                            hostname = matches.group('dns') if matches.group('dns') is not None else 'No encontrado'
                             break
                     if (re.match(regexTimeout, texto[2].lower()) and re.match(regexTimeout, texto[3].lower())) and hostname == 'No encontrado':
-                        print(f'{bcolors.FAIL}{ip} no esta en Uso,se guarda solo en el archivo .log{bcolors.ENDC}')
+                        print(f'{bcolors.FAIL}{ip} no esta en Uso{bcolors.ENDC}')
                         log.writelines(f'\n{str(hoy)},{ip},{hostname},No está en uso')
                         print(LINE_UP, end=LINE_CLEAR)
+                        hoja[f'a{fila}'].value = hoy
+                        hoja[f'b{fila}'].value = ip
+                        hoja[f'c{fila}'].value = hostname
+                        hoja[f'd{fila}'].value = "No está en uso"
+                        fila+=1
                     elif (re.match(regexTimeout, texto[2].lower()) and re.match(regexTimeout, texto[3].lower())) and hostname != 'No encontrado':
                         print(f'{bcolors.WARNING}IP: {ip}, usuario: {hostname} No respondió{bcolors.ENDC}')
                         log.writelines(f'\n{str(hoy)},{ip},{hostname},No respondió pero tiene asignado un hostname en Dominio')
