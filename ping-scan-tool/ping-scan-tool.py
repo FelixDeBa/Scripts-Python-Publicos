@@ -51,13 +51,13 @@ else:
 octetos_fin = [int(dato) for dato in ip_fin.split('.')]
 
 doclog=f'LogIP {ip_inicio}_{ip_fin}_{str(hoy)}.log'
-log = open(doclog,'a')
 
 fila = 2
 for oct1 in range(octetos_inicio[0], octetos_fin[0]+1):
     for oct2 in range(octetos_inicio[1], octetos_fin[1]+1):
         for oct3 in range(octetos_inicio[2], octetos_fin[2]+1):
             for oct4 in range(octetos_inicio[3], octetos_fin[3]+1):
+                log = open(doclog,'a')
                 ip = f"{oct1}.{oct2}.{oct3}.{oct4}"
                 proc = subprocess.Popen(f'ping -n 2 -w 3 -a {ip}', stdout=subprocess.PIPE, shell=True)
                 (out, err) = proc.communicate()
@@ -71,11 +71,11 @@ for oct1 in range(octetos_inicio[0], octetos_fin[0]+1):
                             break
                     if (re.match(regexTimeout, texto[2].lower()) and re.match(regexTimeout, texto[3].lower())) and hostname == 'No encontrado':
                         print(f'{bcolors.FAIL}{ip} no esta en Uso,se guarda solo en el archivo .log{bcolors.ENDC}')
-                        log.writelines(f'\n{ip} No está en uso')
+                        log.writelines(f'\n{str(hoy)},{ip},{hostname},No está en uso')
                         print(LINE_UP, end=LINE_CLEAR)
                     elif (re.match(regexTimeout, texto[2].lower()) and re.match(regexTimeout, texto[3].lower())) and hostname != 'No encontrado':
                         print(f'{bcolors.WARNING}IP: {ip}, usuario: {hostname} No respondió{bcolors.ENDC}')
-                        log.writelines(f'\nIP: {ip}, usuario: {hostname} No respondió pero tiene asignado un hostname en Dominio')
+                        log.writelines(f'\n{str(hoy)},{ip},{hostname},No respondió pero tiene asignado un hostname en Dominio')
                         print(LINE_UP, end=LINE_CLEAR)
                         hoja[f'a{fila}'].value = hoy
                         hoja[f'b{fila}'].value = ip
@@ -84,7 +84,7 @@ for oct1 in range(octetos_inicio[0], octetos_fin[0]+1):
                         fila+=1
                     else:
                         print(f'{bcolors.OKBLUE}IP: {ip}, usuario: {hostname} OK{bcolors.ENDC}')
-                        log.writelines(f'\nIP: {ip}, usuario: {hostname} OK')
+                        log.writelines(f'\n{str(hoy)},{ip},{hostname},OK')
                         print(LINE_UP, end=LINE_CLEAR)
                         hoja[f'a{fila}'].value = hoy
                         hoja[f'b{fila}'].value = ip
@@ -101,16 +101,17 @@ for oct1 in range(octetos_inicio[0], octetos_fin[0]+1):
                     hoja[f'd{fila}'].value = err
                     hoja[f'd{fila}'].fill = PatternFill("solid", fgColor="FF0000")
                     fila+=1
+                log.close()
 
 sleep(2)
 nombredoc=f"Escaneo {ip_inicio}_{ip_fin}_{str(hoy)}.xlsx"
+log = open(doclog,'a')
 try:
     doc.save(nombredoc)
     print(f'Documento guardado como: {bcolors.OKCYAN}{bcolors.UNDERLINE}{nombredoc}{bcolors.ENDC}en la carpeta {bcolors.OKCYAN}{bcolors.UNDERLINE}{os.getcwd()}{bcolors.ENDC}')
-    log.writelines(f'Documento guardado como: {nombredoc} en la carpeta {os.getcwd()}')
 except Exception as e:
     print(f'{bcolors.FAIL}{bcolors.UNDERLINE}No se pudo guardar el documento Error {e}{bcolors.ENDC}')
-    log.writelines(f'No se pudo guardar el documento Error {e}:{str(e)}')
+    log.writelines(f'{str(hoy)},No se pudo guardar el documento,Error {e},{str(e)}')
     
 log.close()
 print(f'Archivos de logs guardado como {doclog} en {os.getcwd()}')
