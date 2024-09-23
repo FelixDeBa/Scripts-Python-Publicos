@@ -2,9 +2,9 @@
 Esta herramienta se hizo con el fin de escanear un rango de direcciones IP a través de un subproceso de windows y vaciar el resultante a un archivo excel que se generará en la misma carpeta donde sejecutó el script
 
 ## REQUIERIMIENTOS
--Sistema Operativo Windows
--Python >=3.11
--openpyxl>=3.1.5
+- Sistema Operativo Windows
+- Python >=3.11
+- openpyxl>=3.1.5
 
 ## INSTRUCCIONES
 Antes de ejecutar el script asegurarse que tengas instalado el lenguaje Python en su versión 3, de preferencia 3.11 o superior
@@ -27,7 +27,7 @@ Una vez cumplidos estos requerimientos puedes ejecutar el script desde una termi
 
 
 ## LIMITANTES
-Actualmente esta librería no funciona para Sistemas operativos distitos a Windows, solo ha sido testeado en Windows 10 y Windows 11
-Si no introduces un rango válido de direcciones IP no escaneará nada e igual generar un documento excel y un documento de log, ambos en blanco.
-En caso de no introducir una dirección IP válida, podría ciclarse pidiendo de nuevo otra dirección IP, por favor, revisar la entrada que se está dando para evitar ciclos infinitos
-El soporte para inglés/español está hecho de manera rudimentaria, sin embargo, en un inicio no debería causar problemas.
++ Actualmente esta librería no funciona para Sistemas operativos distitos a Windows, solo ha sido testeado en Windows 10 y Windows 11
++ Si no introduces un rango válido de direcciones IP no escaneará nada e igual generar un documento excel y un documento de log, ambos en blanco.
++ En caso de no introducir una dirección IP válida, podría ciclarse pidiendo de nuevo otra dirección IP, por favor, revisar la entrada que se está dando para evitar ciclos infinitos
++ El soporte para inglés/español está hecho de manera rudimentaria, sin embargo, en un inicio no debería causar problemas.
