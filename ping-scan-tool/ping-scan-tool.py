@@ -50,7 +50,7 @@ else:
 
 octetos_fin = [int(dato) for dato in ip_fin.split('.')]
 
-doclog=f'LogIP {ip_inicio}_{ip_fin}_{str(hoy)}.log'
+doclog=f'LogEscaneo {ip_inicio}_{ip_fin}_{str(hoy)}.log'
 
 fila = 2
 for oct1 in range(octetos_inicio[0], octetos_fin[0]+1):
