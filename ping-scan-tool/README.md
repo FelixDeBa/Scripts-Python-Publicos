@@ -33,11 +33,11 @@ o
 > El escaneo hace uso del "ping" haciendo dos intentos por cada dirección IP encontrada en el rango con un tiempo de 3 segundos para cada respuesta, por lo que cada ip demorará 6~7 segundos en revisarse aproximadamente, considera los tiempos y la cantidad de Direcciones IP en el rango introducido para asegurar que el equipo que ejecutará el script se mantenga encendido y con conexión a intenet todo el tiempo
 
 5. Una vez introducidas las direcciones IP preguntará si deseas crear un nuevo archivo para el escaneo o si quieres usar une excel ya existente
-   i. En caso de elegir un archivo existente abrirá un cuadro de diálogo pidiendo el archivo Excel sobre el que vas a escribir, este arcivo excel deberá tener los títulos de columna originales ('Fecha Escaneo','IPs','Nombre Dominio','Informacion Adicional') que utiliza este script para generar archivos, en caso de no ser así, creará una nueva hoja agregando un contador al final del nombre e.g. IPs4. El archivo será guardado con su mismo nombre y ubicación reemplazando al anterior, sin embargo, no se eliminará ninguna celda, solo comenzará a escribir a partir de la ultima fila escrita
-   > [!CAUTION]
-   > Si el archivo que seleccionas está en uso por otro programa el script generará un error una vez terminado de hacer el escaneo, p
-   > ASEGURATE DE CERRAR EL ARCHIVO QUE SELECCIONASTE ANTES DE CONTINUAR
-   ii. En caso de elegir crear un archivo nuevo, creará un documento excel llamado Escaneo_<Rango_Semanal>.xlsx, donde Rango Semanal sigue el formato "dia de mes-dia de mes" e.g. "23 de sep-29 de sep" y lo guardará en la misma ruta de ejecución del script
+- En caso de elegir un archivo existente abrirá un cuadro de diálogo pidiendo el archivo Excel sobre el que vas a escribir, este arcivo excel deberá tener los títulos de columna originales ('Fecha Escaneo','IPs','Nombre Dominio','Informacion Adicional') que utiliza este script para generar archivos, en caso de no ser así, creará una nueva hoja agregando un contador al final del nombre e.g. IPs4. El archivo será guardado con su mismo nombre y ubicación reemplazando al anterior, sin embargo, no se eliminará ninguna celda, solo comenzará a escribir a partir de la ultima fila escrita
+> [!CAUTION]
+> Si el archivo que seleccionas está en uso por otro programa el script generará un error una vez terminado de hacer el escaneo,
+> ASEGURATE DE CERRAR EL ARCHIVO QUE SELECCIONASTE ANTES DE CONTINUAR
+-En caso de elegir crear un archivo nuevo, creará un documento excel llamado Escaneo_<Rango_Semanal>.xlsx, donde Rango Semanal sigue el formato "dia de mes-dia de mes" e.g. "23 de sep-29 de sep" y lo guardará en la misma ruta de ejecución del script
 
 5. Una vez terminado el escaneo generará archivo log de nombre "LogEscaneo <rango_semanal>.log" y abrirá el explorador de windows en la carpeta en la que se guardó el archivo
 
